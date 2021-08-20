@@ -1,5 +1,6 @@
 package lu.isd.jetty;
 
+import lu.isd.jetty.controller.EchoControllerJson;
 import lu.isd.jetty.controller.EchoControllerXml;
 import org.eclipse.jetty.server.Server;
 import org.glassfish.jersey.moxy.xml.MoxyXmlFeature;
@@ -30,7 +31,7 @@ public class App {
             System.out.println("Service (Jersey + Jetty).");
 
             ResourceConfig resourceConfig = new ResourceConfig(
-                    EchoControllerXml.class
+                    EchoControllerXml.class, EchoControllerJson.class
             ).packages("lu.isd.jetty.model.echo")
                     .register(MoxyXmlFeature.class);
                     //.register(JacksonFeature.class);
