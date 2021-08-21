@@ -6,12 +6,16 @@ import org.eclipse.jetty.server.ServerConnector;
 import org.eclipse.jetty.server.handler.ContextHandler;
 import org.glassfish.jersey.jetty.JettyHttpContainerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 
 public class HttpServer {
+
+    private static final Logger log = LoggerFactory.getLogger(HttpServer.class);
 
     private Integer basePort = 9999;
 
@@ -25,6 +29,8 @@ public class HttpServer {
         final String path = "/";
         URI appUri = UriBuilder.fromUri("http://localhost/").port(basePort).build();
         Server server = JettyHttpContainerFactory.createServer(appUri, resourceConfig, false);
+
+        log.trace("Server is [{}]", server);
 
         var c = server.getConnectors();
         var cc = (ServerConnector) c[0];

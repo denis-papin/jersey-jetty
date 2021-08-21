@@ -1,5 +1,6 @@
 package lu.isd.jetty;
 
+import com.fasterxml.jackson.core.util.JacksonFeature;
 import lu.isd.jetty.controller.EchoControllerJson;
 import lu.isd.jetty.controller.EchoControllerXml;
 import org.eclipse.jetty.server.Server;
@@ -32,7 +33,7 @@ public class App {
 
             ResourceConfig resourceConfig = new ResourceConfig(
                     EchoControllerXml.class, EchoControllerJson.class
-            ).packages("lu.isd.jetty.model.echo")
+            )
                     .register(MoxyXmlFeature.class);
                     //.register(JacksonFeature.class);
 

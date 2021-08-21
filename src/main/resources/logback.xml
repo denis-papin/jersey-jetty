@@ -31,11 +31,10 @@
 
     <!-- disable the netty grpc warning -->
 <!--    <logger name="io.grpc.netty.shaded.io" level="ERROR"/>-->
-<!--	-->
 <!--	<logger name="org.eclipse.jetty" level="ERROR"/>-->
 
     <!-- LOG everything at DEBUG level -->
-    <root level="debug">
+    <root level="all">
         <appender-ref ref="RollingFile" />
         <appender-ref ref="Console" />
     </root>
